@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Carrinho</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+        .cart-container {
+            max-width: 400px;
+            margin: auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        .cart-info {
+            flex: 1;
+            margin-left: 12px;
+            text-align: left;
+        }
+        .cart-info h3 {
+            font-size: 14px;
+            color: #333;
+            margin: 0;
+        }
+        .cart-info p {
+            font-size: 12px;
+            color: #777;
+        }
+        .cart-controls button {
+            background: #ff4d4d;
+            color: #fff;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .cart-controls button:hover {
+            background: #e60000;
+        }
+        .botao {
+            margin-top: 20px;
+        }
+        .botao button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .botao button:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <h2>SEU CARRINHO</h2>
+    <div class="cart-container">
+        <ul id="carrinho"></ul>
+    </div>
+    <div class="botao">
+        <button onclick="limparCarrinho()">Limpar Carrinho</button>
+        <button onclick="window.location.href='index.html'">Voltar para a Loja</button>
+    </div>
+
+    <script>
+        function atualizarCarrinho() {
+            const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            const lista = document.getElementById("carrinho");
+            lista.innerHTML = "";
+            
+            carrinho.forEach((item, index) => {
+                let li = document.createElement("li");
+                li.classList.add("cart-item");
+                li.innerHTML = `
+                    <div class="cart-info">
+                        <h3>${item.nome}</h3>
+                        <p>Preço: R$ ${item.preco}</p>
+                    </div>
+                    <div class="cart-controls">
+                        <button onclick="removerDoCarrinho(${index})">Remover</button>
+                    </div>
+                `;
+                lista.appendChild(li);
+            });
+        }
+
+        function removerDoCarrinho(index) {
+            let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            carrinho.splice(index, 1);
+            localStorage.setItem("carrinho", JSON.stringify(carrinho));
+            atualizarCarrinho();
+        }
+
+        function limparCarrinho() {
+            localStorage.removeItem("carrinho");
+            atualizarCarrinho();
+        }
+
+        document.addEventListener("DOMContentLoaded", atualizarCarrinho);
+    </script>
+</body>
+</html>

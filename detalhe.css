@@ -1,0 +1,273 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #000000;
+    height: 100vh;
+}
+
+header {
+    background: #ffffff;
+    padding: 10px 0;
+    box-shadow: 0px 4px 2px -2px gray;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10 20px;
+}
+
+.menu-items {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+.menu ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+.menu li {
+    font-weight: bold;
+}
+
+.menu a:hover {
+    color: #000;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #555;
+    margin: 0 15px;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.search {
+    padding: 10px;
+    border: 3px solid #ddd;
+    border-radius: 15px;
+    width: 185px;
+}
+                    /*primeira linha de podutos*/
+.products {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+    list-style: none;
+}
+
+.product {
+    width: 200px;
+    border: 0px solid #000000;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000000;
+    background-color: white;
+}
+
+.product img {
+    width: 200px; /* ou outro valor fixo */
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.price {
+    color: #E44D26;
+    font-weight: bold;
+}
+        /*segunda linha de produtos*/
+.teniss {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+    list-style: none;
+  
+}
+
+.tenis {
+    width: 200px;
+    border: 0px solid #000000;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000000;
+    background-color: white;
+}
+
+.tenis img {
+    width: 200px; /* ou outro valor fixo */
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+                     /*terceira linha de produtos*/
+.DUNKS {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+    list-style: none;
+  
+}
+
+.DUNKL {
+    width: 200px;
+    border: 0px solid #000000;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000000;
+    background-color: white;
+}
+
+.DUNKL img {
+    width: 200px; /* ou outro valor fixo */
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+                     /*quarta linha de produtos*/
+                     .AGUA {
+                        display: flex;
+                        justify-content: center;
+                        gap: 20px;
+                        flex-wrap: wrap;
+                        padding: 20px;
+                        list-style: none;
+                      
+                    }
+                    
+                    .AGUAS {
+                        width: 200px;
+    border: 0px solid #000000;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000000;
+    background-color: white;
+                    }
+                    
+                    .AGUAS img {
+                        width: 200px; /* ou outro valor fixo */
+                        height: 250px;
+                        object-fit: cover;
+                        border-radius: 5px;
+                    }
+
+                    /*quinta linha de produtos*/
+
+                    .FIRE {
+                        display: flex;
+                        justify-content: center;
+                        gap: 20px;
+                        flex-wrap: wrap;
+                        padding: 20px;
+                        list-style: none;
+                      
+                    }
+                    
+                    .FIRES {
+                        width: 200px;
+    border: 0px solid #000000;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000000;
+    background-color: white;
+                    }
+                    
+                    .FIRES img {
+                        width: 200px; /* ou outro valor fixo */
+                        height: 250px;
+                        object-fit: cover;
+                        border-radius: 5px;
+                    }
+
+                    .Pag2 {
+                        list-style: none;
+                        display: flex;
+                        gap: 20px;
+                    }
+                    
+                    .Pag2 li {
+                        display: inline;
+                    }
+                    
+                    .Pag2 a {
+                        text-decoration: none;
+                        color: black;
+                        font-weight: bold;
+                    }
+
+                    .logo {
+                        background-image: url('Aktusuki.png');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                    }
+
+                    .logo span {
+                        color: rgb(63, 56, 56);
+                    }
+ 
+                    .promoção img {
+                        width: 80%;
+                        height: 80%;
+                    }
+                    .promoção {
+                        display: flex;
+                        justify-content: center; /* Centraliza horizontalmente */
+                        align-items: center; /* Centraliza verticalmente */
+                        height: 100vh; /* Ocupa toda a altura da tela */
+                        width: 100vw; /* Ocupa toda a largura da tela */
+                        overflow: hidden; /* Evita rolagem indesejada */
+                        background-color: #00000000;
+                    }
+
+                    video {
+                        max-width: 90%; /* Garante que o vídeo não ultrapasse a largura */
+                        max-height: 90%; /* Garante que o vídeo não ultrapasse a altura */
+                        object-fit: cover; /* Faz com que o vídeo cubra o espaço disponível */
+                    }
+                    
+                    
+
+                    .desconto {
+                        background-color: red;
+                        color: white;
+                        font-weight: bold;
+                        padding: 5px 10px;
+                        border-radius: 5px;
+                    }
+
+                    a {
+                        color: #000000; /* Cor padrão do link */
+                        text-decoration: none; /* Remover o sublinhado */
+                        font-size: 18px;
+                        font-family: Arial, sans-serif;
+                    }
+
+                    .fundo {
+                        background-color: #c9c9c9;
+                        background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
+                        background-position: center; /* Centraliza a imagem */
+                        background-repeat: no-repeat; /* Evita repetição */
+                    }
+                
+                    
+                

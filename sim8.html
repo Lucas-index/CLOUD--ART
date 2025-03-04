@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOUD ART</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .card {
+            display: flex;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+        }
+        .card img {
+            width: 400px;
+            border-radius: 5px;
+        }
+        .card-content {
+            padding-left: 50px;
+        }
+        h2 {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        p {
+            font-size: 16px;
+            color: #444;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .audio-player {
+            margin-top: 10px;
+            width: 80%;
+            height: 30px;
+        }
+        .size-container {
+            display: flex;
+            flex-direction: row; /* Alinha os elementos na horizontal */
+            justify-content: center; /* Centraliza os itens horizontalmente */
+            gap: 10px; /* Espaço entre os tamanhos */
+            margin-top: 20px;
+        }
+        .size-box {
+            padding: 10px 10px;
+            border: 2px solid gray;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 80px;
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .size-box:hover, .selected {
+            background-color: black;
+            color: white;
+        }
+        .tamanho {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .carrinho {
+                   position: fixed;
+                   top: 10px;
+                   right: 10px;
+                   list-style: none;
+                   border: none; /* Remove qualquer borda */
+        }
+        .carrinho img {
+            width: 70px;
+            height: 50px;
+        }
+
+        button { cursor: pointer; }
+
+        .botao button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="carrinho">
+        <button><li><a href="carrinho.html"><img src="carinho.png" alt="carrinho"></a></li></button>
+        </div>
+    <div class="card">
+        <img src="Tn1.jpeg" alt="Jordan Spizike Low White Cool Grey">
+        <div class="card-content">
+            <h2><strong>AIR MAX PLUS 1 ROCKET BLUE EDICTION SPECIAL</strong></h2>
+            <hr><br>
+            <h3><i><span style="color: rgb(63, 63, 63);">O Nike Air Max Plus Azul tem cabedal de malha respirável,
+                 com sobreposições onduladas em TPU e unidades Air-Sole visíveis para amortecimento. O solado de borracha oferece tração,
+                  combinando estilo e desempenho.</i></span></h3>
+                <br>
+                
+            <p class="price"><h4>
+                <strong><spam style="color:black;">R$ 854,99 no Pix</spam></strong>
+                <del>R$ 899,99</del> 
+                <span style="color: rgb(235, 4, 4);">5% off</span>
+                <br>
+                ou <strong><spam style="color:black;">R$ 899,99</spam></strong> em até <strong><spam style="color:black;">10x sem juros</spam></strong>
+            </h4></p>
+            <br>
+            <div class="tamanho">
+                <h3>Escolha seu tamanho:</h3>
+                <div class="size-container" id="sizeContainer">
+                    <div class="size-box" data-size="38">38</div>
+                    <div class="size-box" data-size="39">39</div>
+                    <div class="size-box" data-size="40">40</div>
+                    <div class="size-box" data-size="41">41</div>
+                    <div class="size-box" data-size="42">42</div>
+                    <div class="size-box" data-size="43">43</div>
+                    <div class="size-box" data-size="44">44</div>
+                </div>
+                <p id="selectedSize">Tamanho selecionado: Nenhum</p>
+                <div class="botao">
+                <button onclick="adicionarAoCarrinho(1, 'AIR MAX PLUS 1 ROCKET BLUE EDICTION SPECIAL', 854.99)">Adicionar ao Carrinho</button>
+                </div>
+                <script>
+
+function adicionarAoCarrinho(id, nome, preco,) {
+    if (!tamanho) {
+        alert("Por favor, selecione um tamanho!");
+        return;
+    }
+
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    carrinho.push({ id, nome, preco, });
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    atualizarCarrinho();
+}
+
+document.querySelectorAll('.size-box').forEach(box => {
+    box.addEventListener('click', function() {
+        document.querySelectorAll('.size-box').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+        document.getElementById('selectedSize').innerText = 'Tamanho selecionado: ' + this.dataset.size;
+
+        // Armazenar o tamanho selecionado no localStorage ou em uma variável
+        localStorage.setItem("tamanhoSelecionado", this.dataset.size);
+    });
+});
+
+
+                     function adicionarAoCarrinho(id, nome, preco) {
+            let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            carrinho.push({ id, nome, preco });
+            localStorage.setItem("carrinho", JSON.stringify(carrinho));
+            atualizarCarrinho();
+        }
+
+        function atualizarCarrinho() {
+            const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            const lista = document.getElementById("carrinho");
+            lista.innerHTML = "";
+            
+            carrinho.forEach((item, index) => {
+                let li = document.createElement("li");
+                li.textContent = `${item.nome} - R$ ${item.preco}`;
+                let btnRemover = document.createElement("button");
+                btnRemover.textContent = "Remover";
+                btnRemover.onclick = () => removerDoCarrinho(index);
+                li.appendChild(btnRemover);
+                lista.appendChild(li);
+            });
+        }
+
+        function removerDoCarrinho(index) {
+            let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            carrinho.splice(index, 1);
+            localStorage.setItem("carrinho", JSON.stringify(carrinho));
+            atualizarCarrinho();
+        }
+
+        function limparCarrinho() {
+            localStorage.removeItem("carrinho");
+            atualizarCarrinho();
+        }
+
+        document.addEventListener("DOMContentLoaded", atualizarCarrinho);
+
+        document.querySelectorAll('.size-box').forEach(box => {
+    box.addEventListener('click', function() {
+        document.querySelectorAll('.size-box').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+        document.getElementById('selectedSize').innerText = 'Tamanho selecionado: ' + this.dataset.size;
+
+        // Armazenar o tamanho selecionado no localStorage ou em uma variável
+        localStorage.setItem("tamanhoSelecionado", this.dataset.size);
+    });
+});
+                </script>
+                </div>
+            <audio id="myAudio">
+                <source src="Tn1.mp3" type="audio/mpeg">
+            </audio>
+            
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    let audio = document.getElementById("myAudio");
+                    audio.play().catch(error => {
+                        console.log("Autoplay bloqueado. O usuário precisa interagir primeiro.");
+                    });
+                });
+            </script>
+        </div>
+    </div>
+</body>
+</html>
