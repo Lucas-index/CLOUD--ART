@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #2e468c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #000;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4b6cb7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #3a55a0;
+    }
+
+    p {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    a {
+      color: #4b6cb7;
+      text-decoration: none;
+    }
+
+    .error-msg {
+      color: red;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="senha" placeholder="Senha" required />
+      <button type="submit">Entrar</button>
+    </form>
+    <p>Não tem conta? <a href="loginecadrastro.html">Cadastre-se Agora</a></p>
+    <p id="loginErro" class="error-msg"></p>
+  </div>
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBJZiUbIFHHRKcfoaNbK3qysldT44oMNmw",
+      authDomain: "cloud-art01.firebaseapp.com",
+      databaseURL: "https://cloud-art01-default-rtdb.firebaseio.com",
+      projectId: "cloud-art01",
+      storageBucket: "cloud-art01.appspot.com",
+      messagingSenderId: "927738413376",
+      appId: "1:927738413376:web:d766719bd77d67c0347aa5",
+      measurementId: "G-HWNMCPQTR1"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const form = document.getElementById("loginForm");
+    const erroMsg = document.getElementById("loginErro");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+
+      signInWithEmailAndPassword(auth, email, senha)
+        .then(() => {
+          window.location.href = "carrinho.html";
+        })
+        .catch((error) => {
+          erroMsg.textContent = `Erro: ${error.message}`;
+        });
+    });
+  </script>
+</body>
+</html>

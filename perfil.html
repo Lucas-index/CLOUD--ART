@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perfil</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #2e468c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      text-align: left;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #000;
+    }
+    p {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+    .field-label {
+      font-weight: bold;
+    }
+    input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .buttons button {
+      background-color: #4b6cb7;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+    .buttons button:hover {
+      background-color: #3a55a0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Perfil</h2>
+    <p><span class="field-label">Nome:</span> <span id="nome"></span></p>
+    <p><span class="field-label">E‑mail:</span> <span id="email"></span></p>
+    <p class="field-label">Senha:</p>
+    <!-- Por segurança, não é possível recuperar a senha original.
+         Mostramos apenas um campo mascarado. -->
+    <input type="password" value="********" disabled />
+
+    <div class="buttons">
+      <button onclick="window.location.href='carrinho.html'">Voltar ao Carrinho</button>
+      <button onclick="logout()">Sair</button>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+    import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBJZiUbIFHHRKcfoaNbK3qysldT44oMNmw",
+      authDomain: "cloud-art01.firebaseapp.com",
+      databaseURL: "https://cloud-art01-default-rtdb.firebaseio.com",
+      projectId: "cloud-art01",
+      storageBucket: "cloud-art01.appspot.com",
+      messagingSenderId: "927738413376",
+      appId: "1:927738413376:web:d766719bd77d67c0347aa5",
+      measurementId: "G-HWNMCPQTR1"
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const database = getDatabase(app);
+
+    // Protege a rota e preenche dados
+    onAuthStateChanged(auth, user => {
+      if (!user) {
+        // Se não estiver logado, redireciona ao login
+        window.location.href = 'login.html';
+      } else {
+        // Carrega e exibe email
+        document.getElementById("email").textContent = user.email;
+        // Busca nome no Realtime Database
+        const nomeRef = ref(database, `compradores/${user.uid}/nome`);
+        get(nomeRef).then(snapshot => {
+          document.getElementById("nome").textContent = snapshot.exists() ? snapshot.val() : '—';
+        });
+      }
+    });
+
+    // logout
+    window.logout = () => {
+      signOut(auth).then(() => {
+        window.location.href = 'login.html';
+      });
+    };
+  </script>
+</body>
+</html>
