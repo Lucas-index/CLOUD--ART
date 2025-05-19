@@ -77,8 +77,22 @@ nav {
     border: 0px solid #000000;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px #000000;
-    background-color: white;
+    box-shadow: 0px 0px 10px #1aa1b3;
+
+    background-image: url('ilustracao-de-cloudy-blue-sky_2963-27.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.product a {
+    font-family: 'Orbitron', sans-serif;
+    color: #000000; /* ou outra cor que preferir */
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    display: block;
+    line-height: 1.4;
 }
 
 .product img {
@@ -104,12 +118,26 @@ nav {
 }
 
 .tenis {
-    width: 200px;
+      width: 200px;
     border: 0px solid #000000;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px #000000;
-    background-color: white;
+    box-shadow: 0px 0px 10px #1aa1b3;
+
+    background-image: url('ilustracao-de-cloudy-blue-sky_2963-27.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tenis a {
+    font-family: 'Orbitron', sans-serif;
+    color: #000000; /* ou outra cor que preferir */
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    display: block;
+    line-height: 1.4;
 }
 
 .tenis img {
@@ -130,12 +158,26 @@ nav {
 }
 
 .DUNKL {
-    width: 200px;
+     width: 200px;
     border: 0px solid #000000;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px #000000;
-    background-color: white;
+    box-shadow: 0px 0px 10px #1aa1b3;
+
+    background-image: url('ilustracao-de-cloudy-blue-sky_2963-27.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.DUNKL a {
+    font-family: 'Orbitron', sans-serif;
+    color: #000000; /* ou outra cor que preferir */
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    display: block;
+    line-height: 1.4;
 }
 
 .DUNKL img {
@@ -156,12 +198,26 @@ nav {
                     }
                     
                     .AGUAS {
-                        width: 200px;
+                         width: 200px;
     border: 0px solid #000000;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px #000000;
-    background-color: white;
+    box-shadow: 0px 0px 10px #1aa1b3;
+
+    background-image: url('ilustracao-de-cloudy-blue-sky_2963-27.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+                    }
+
+                    .AGUAS a {
+                        font-family: 'Orbitron', sans-serif;
+                        color: #000000; /* ou outra cor que preferir */
+                        font-size: 14px;
+                        font-weight: 700;
+                        text-align: center;
+                        display: block;
+                        line-height: 1.4;
                     }
                     
                     .AGUAS img {
@@ -188,8 +244,22 @@ nav {
     border: 0px solid #000000;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px #000000;
-    background-color: white;
+    box-shadow: 0px 0px 10px #1aa1b3;
+
+    background-image: url('ilustracao-de-cloudy-blue-sky_2963-27.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+                    }
+
+                    .FIRES a {
+                        font-family: 'Orbitron', sans-serif;
+                        color: #000000; /* ou outra cor que preferir */
+                        font-size: 14px;
+                        font-weight: 700;
+                        text-align: center;
+                        display: block;
+                        line-height: 1.4;
                     }
                     
                     .FIRES img {
@@ -263,11 +333,57 @@ nav {
                     }
 
                     .fundo {
-                        background-color: #c9c9c9;
-                        background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
-                        background-position: center; /* Centraliza a imagem */
-                        background-repeat: no-repeat; /* Evita repetição */
-                    }
+    background-image: url('fe262665-3426-496f-9c59-926cc6577ba0.png'); /* nome da imagem enviada */
+    background-size: cover; /* Preenche toda a área */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
                 
                     
+                
+                    @keyframes aparecer {
+  from {
+    opacity: 0;
+    clip-path: inset(100% 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Aplicar animação a todos os cartões de produtos */
+.product,
+.tenis,
+.DUNKL,
+.AGUAS,
+.FIRES{
+  animation: aparecer linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+body::before {
+    content: "";
+    background-image: url('ilustracao-de-cloudy-blue-sky_2963-27.avif'); /* Substitua por sua imagem real */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    opacity: 1; /* Se quiser um efeito mais sutil, use 0.5 ou algo assim */
+}
+
+.products, .teniss, .DUNKS, .AGUA, .FIRE {
+    position: relative;
+    z-index: 1;
+}
+
+
+
                 
